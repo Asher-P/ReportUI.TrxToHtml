@@ -34,6 +34,9 @@ public class Times
     [XmlAttribute("creation")]
     public DateTime Creation { get; set; }
 
+    [XmlAttribute("queuing")]
+    public DateTime Queuing { get; set; }
+
     [XmlAttribute("start")]
     public DateTime Start { get; set; }
 
@@ -78,6 +81,18 @@ public class Output
 {
     [XmlElement("StdOut")]
     public string StdOut { get; set; }
+
+    [XmlElement("ErrorInfo")]
+    public ErrorInfo ErrorInfo { get; set; }
+}
+
+public class ErrorInfo
+{
+    [XmlElement("Message")]
+    public string Message { get; set; }
+
+    [XmlElement("StackTrace")]
+    public string StackTrace { get; set; }
 }
 
 public class UnitTest
@@ -85,12 +100,30 @@ public class UnitTest
     [XmlAttribute("name")]
     public string Name { get; set; }
 
+    [XmlAttribute("storage")]
+    public string Storage { get; set; }
+
+    [XmlElement("Execution")]
+    public Execution Execution { get; set; }
+
     [XmlElement("TestMethod")]
     public TestMethod TestMethod { get; set; }
 }
 
+public class Execution
+{
+    [XmlAttribute("id")]
+    public string Id { get; set; }
+}
+
 public class TestMethod
 {
+    [XmlAttribute("codeBase")]
+    public string CodeBase { get; set; }
+
+    [XmlAttribute("adapterTypeName")]
+    public string AdapterTypeName { get; set; }
+
     [XmlAttribute("className")]
     public string ClassName { get; set; }
 
@@ -105,6 +138,9 @@ public class ResultSummary
 
     [XmlElement("Counters")]
     public Counters Counters { get; set; }
+
+    [XmlElement("Output")]
+    public Output SummaryOutput { get; set; }
 }
 
 public class Counters
@@ -120,4 +156,40 @@ public class Counters
 
     [XmlAttribute("failed")]
     public int Failed { get; set; }
+
+    [XmlAttribute("error")]
+    public int Error { get; set; }
+
+    [XmlAttribute("timeout")]
+    public int Timeout { get; set; }
+
+    [XmlAttribute("aborted")]
+    public int Aborted { get; set; }
+
+    [XmlAttribute("inconclusive")]
+    public int Inconclusive { get; set; }
+
+    [XmlAttribute("passedButRunAborted")]
+    public int PassedButRunAborted { get; set; }
+
+    [XmlAttribute("notRunnable")]
+    public int NotRunnable { get; set; }
+
+    [XmlAttribute("notExecuted")]
+    public int NotExecuted { get; set; }
+
+    [XmlAttribute("disconnected")]
+    public int Disconnected { get; set; }
+
+    [XmlAttribute("warning")]
+    public int Warning { get; set; }
+
+    [XmlAttribute("completed")]
+    public int Completed { get; set; }
+
+    [XmlAttribute("inProgress")]
+    public int InProgress { get; set; }
+
+    [XmlAttribute("pending")]
+    public int Pending { get; set; }
 }
